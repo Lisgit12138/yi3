@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>跳转页</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+<link rel="shortcut icon" href="{% static "images/拜托熊_小.png" %}" type="image/ico" />
+<style>
+.demo{width:300px; margin:60px auto 10px auto}
+@media only screen and (min-width: 420px) {
+	.demo{width:500px; margin:60px auto 10px auto}
+}
+.demo p{line-height:36px}
+.button {
+	display: inline-block;
+	cursor:pointer;
+	outline: none;
+	text-align: center;
+	text-decoration: none;
+	font: 16px/100% 'Microsoft yahei',Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #ededed;
+}
+.button:hover {
+	text-decoration: none;
+	background: #fff;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+	color: #999;
+}
+p#time {
+    text-align: right;
+}
+</style>
+</head>
+
+<body>
+<div id="header">
+   <div id="logo"><h1><a href="http://www.yiban.cn">yiban</a></h1></div>
+</div>
+<div id="main">
+	<div class="demo">
+        <div>
+            <p>1.在线上抢资格的时候，在保证账户所剩余网薪充足的前提下，每个id仅限抢一件实物的兑换资格。</p>
+            <p>2.在盖楼惊喜抢小件物品的时候，每个id连续刷楼超过9楼的直接取消资格。</p>
+            <p>3.盖楼中活动中，留言或者评论在15字以下的为无效评论。仅限抢到指定楼层的id可获得小惊喜。</p>
+            <p>5.抢资格中抢的物品大于等于2时，扣除相应网薪且不予以实物兑换的资格。</p>
+            <p>6.在规定时间内未到指定地点领取实物的同学视作放弃兑换资格。</p>
+            <p>7.领取实物时，必须携带有效证件（学生证，身份证等），代领规则也相同。</p>
+            <p>8.网薪兑换活动规则解释权归西南医科大学易班学生工作站所有，有疑问请联系各分站站长。</p>
+            <p id="time">2017.5.15</p>
+            <hr />
+        </div>
+	<p style="color:red">请认真阅读完注意事项再点击按钮</p>
+	<form action="http://eshop.yiban.cn" method="get" name="agree">
+		<input type="submit" class="button" value="请认真查看<服务条款和声明> (45)" id="agree_btn" name="agreeb">
+	</form>
+	<br/>
+	<br/>
+	<br/>
+	</div>
+    <br/>
+</div>
+<script>
+var secs = 45;
+document.agree.agreeb.disabled=true;
+for(var i=1;i<=secs;i++) {
+	window.setTimeout("update(" + i + ")", i * 1000);
+}
+function update(num) {
+	if(num == secs) {
+		document.agree.agreeb.value =" 我 同 意 ";
+		document.agree.agreeb.disabled=false;
+	}
+	else {
+		var printnr = secs-num;
+		document.agree.agreeb.value = "请认真查看<服务条款和声明> (" + printnr +")";
+	}
+}
+
+function showtime(t){
+	document.myform.phone.disabled=true;
+	for(i=1;i<=t;i++) {
+		window.setTimeout("update_p(" + i + ","+t+")", i * 1000);
+	}
+
+}
+</script>
+
+<div id="footer">
+    <p>Powered by 西南医大易班技术开发部</p>
+</div>
+</body>
+</html>
